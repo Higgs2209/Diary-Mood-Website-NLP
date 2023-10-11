@@ -6,9 +6,6 @@ import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 
 
-# use sort fucntion
-# use glob to load files
-values = {}
 # Download nltk lexicon
 nltk.download('vader_lexicon')
 
@@ -20,21 +17,14 @@ dates = []
 positivity_values = []
 negativity_values = []
 
-stopwords = ['pos:']
 
 for filepath in filepaths:
     with (open(filepath, "r", encoding="utf-8") as file):
         diary = file.read()
         analyser = SentimentIntensityAnalyzer()
         scores = analyser.polarity_scores(diary)
-
-
         positivity_values.append(scores["pos"])
         negativity_values.append(scores["neg"])
-
-
-print(positivity_values)
-print(negativity_values)
 
 
 # Extract Dates
